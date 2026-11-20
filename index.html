@@ -52,20 +52,41 @@
         <input type="text" id="project-search" placeholder="Search by project name...">
       </div>
 
+      <div class="project-controls">
+        <div class="control-group">
+          <label for="project-filter">Filter by Category:</label>
+          <select id="project-filter">
+            <option value="all">All Projects</option>
+            <option value="web">Web Projects</option>
+            <option value="programming">Programming Projects</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="project-sort">Sort Projects:</label>
+          <select id="project-sort">
+            <option value="default">Default Order</option>
+            <option value="az">Name: A–Z</option>
+            <option value="za">Name: Z–A</option>
+          </select>
+        </div>
+      </div>
+
+
       <p id="no-projects-message" hidden>
         No projects found. Try another keyword.
       </p>
 
       <div class="projects-container">
 
-        <article class="project-card">
+        <article class="project-card" data-category="web">
           <img src="assets/images/parking-project.png" alt="KFUPM Parking Reservation System prototype">
           <h3>Project 1 — KFUPM Parking Reservation System</h3>
           <p>Designed a KFUPM parking reservation system prototype that helps users
             view parking availability and reserve parking spaces efficiently.</p>
         </article>
 
-        <article class="project-card">
+        <article class="project-card" data-category="programming">
           <img src="assets/images/file-system-project.png" alt="Code from the In-Memory File System Simulator">
           <h3>Project 2 — In-Memory File System Simulator</h3>
           <p>Developed an in-memory file system simulator using OOP, applying data structures and algorithms using
