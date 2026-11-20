@@ -1,30 +1,35 @@
-# Personal Portfolio Website — Assignment 2
+# Personal Portfolio Website — Assignment 3
 
 ## About the Project
 
-This project is an improved version of my personal portfolio website from Assignment 1 for SWE 363. It introduces my background as a Computer Science student, showcases my academic projects, and includes a contact form.
+This project is an advanced version of my personal portfolio website developed for SWE 363. It builds on Assignments 1 and 2 by introducing more interactive features, external API integration, and improved JavaScript functionality.
 
-For Assignment 2, I added new interactive features to make the website more useful and user-friendly. These include live project search, dark and light mode, and improved contact form validation and feedback.
+The website introduces my background as a Computer Science student, showcases my academic projects, and provides a contact form. Assignment 3 focuses on improving user interaction, managing application state, and enhancing performance and usability.
 
 ## Features
 
 - About Me section with my academic background and interests
 - Projects section showcasing two academic projects with images
-- Live project search that filters projects while typing
-- Dark and light mode that saves the selected theme using `localStorage`
-- Contact form with input validation and feedback messages
+- Live project search, category filtering, and alphabetical sorting
+- GitHub API integration to dynamically display public repositories
+- Custom project descriptions and links to GitHub repositories
+- Dark and light mode with preferences saved using `localStorage`
+- Advanced contact form validation with confirmation and feedback messages
 - Responsive design for desktop, tablet, and mobile screens
 - Smooth scrolling, hover effects, and transitions
+- Performance testing using Google Lighthouse
 
 ## Technologies Used
 
 - HTML5
 - CSS3
-- JavaScript
-- CSS Flexbox
-- CSS Grid
+- JavaScript (ES6+)
+- GitHub REST API
+- Fetch API with `async/await`
+- CSS Flexbox and CSS Grid
 - Media Queries
 - Web Storage API (`localStorage`)
+- Google Lighthouse
 
 ## Projects Included
 
@@ -38,10 +43,8 @@ Developed an in-memory file system simulator using OOP, HashMaps, trees, DFS, an
 
 ## Project Structure
 
-The project is organized into separate folders for styling, JavaScript, images, and documentation.
-
 ```text
-swe363 hw2/
+202363230-noraalqahtani-assignment3/
 ├── assets/
 │   └── images/
 │       ├── file-system-project.png
@@ -53,51 +56,95 @@ swe363 hw2/
 │   └── technical-documentation.md
 ├── js/
 │   └── script.js
+├── .gitignore
 ├── index.html
 └── README.md
 ```
 
 ### File Descriptions
 
-- `index.html` — Contains the About Me, Projects, and Contact sections.
-- `css/styles.css` — Contains the website styling, responsive layout, and theme colors.
-- `js/script.js` — Handles project search, theme switching, and contact form validation.
-- `assets/images/` — Stores screenshots from my academic projects.
-- `docs/ai-usage-report.md` — Explains how AI tools were used during development.
-- `docs/technical-documentation.md` — Describes the technical implementation of the website.
+- `index.html` — Contains the About Me, Projects, GitHub Repositories, and Contact sections.
+- `css/styles.css` — Contains the website styling, responsive layout, theme colors, and GitHub repository cards.
+- `js/script.js` — Handles API integration, project search, filtering, sorting, theme switching, and contact form validation.
+- `assets/images/` — Stores images of my academic projects.
+- `docs/ai-usage-report.md` — Documents AI tools, usage logs, modifications, and learning outcomes.
+- `docs/technical-documentation.md` — Explains the technical implementation and performance testing.
 - `README.md` — Provides project information and setup instructions.
+- `.gitignore` — Excludes unnecessary files and AI evidence from the repository.
 
 ## How to Run
 
-1. Download or clone the repository.
-2. Open the project folder.
-3. Open `index.html` in a modern web browser such as Chrome or Edge.
-4. No additional installation or backend server is required.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/nora-alqahtani/202363230-noraalqahtani-assignment3.git
+   ```
+
+2. Open the project folder in Visual Studio Code.
+3. Open `index.html` using the Live Server extension.
+4. The website will open in a browser, typically at `http://127.0.0.1:5500/`.
+
+No additional dependencies or backend server are required. An internet connection is needed to fetch GitHub repository data.
 
 ## JavaScript Features
 
-### Live Project Search
+### GitHub API Integration
 
-The Projects section includes a search field that filters projects based on their titles as the user types. If no project matches the search, a message is displayed.
+The website connects to the GitHub REST API using `fetch()` and `async/await` to retrieve and display public repositories.
+
+It displays repository names, descriptions, and links. The final Fayidh team repository is fetched separately, replacing the older Fayidh repository in the displayed list.
+
+The API integration includes error handling to display a user-friendly message if the request fails.
+
+### Project Search, Filtering, and Sorting
+
+Visitors can search projects by name, filter them by category (Web or Programming), and sort them alphabetically (A–Z or Z–A).
+
+These features work together using JavaScript array methods and conditional logic. A message appears when no projects match the selected criteria.
 
 ### Dark and Light Mode
 
-The website allows users to switch between dark and light themes. The selected theme is saved using `localStorage`, so it remains the same after refreshing the page.
+Visitors can switch between light and dark themes. The selected preference is saved using `localStorage`, allowing the website to remember it after refreshing.
 
-### Contact Form
+### Advanced Contact Form Validation
 
-The contact form includes Name, Email, and Message fields with validation. It displays a success message when the form is completed correctly and provides feedback for invalid inputs.
+The contact form validates the visitor's name, email address, and message.
 
-The form is a demonstration and does not send messages to a server.
+- All fields must be completed.
+- Name must contain at least two characters.
+- Email must have a valid format.
+- Message must contain at least ten characters.
+- A confirmation dialog appears before completing the submission.
+
+The form displays appropriate success or error messages. It is a front-end demonstration and does not send messages to a server.
+
+## Performance and Compatibility
+
+The website was tested using Google Lighthouse in mobile mode.
+
+| Category | Score |
+|---|---|
+| Performance | 99/100 |
+| Accessibility | 100/100 |
+| Best Practices | 100/100 |
+| SEO | 91/100 |
+
+The website uses responsive layouts, CSS Grid, Flexbox, and media queries to support different screen sizes. Additional cross-browser compatibility testing is recommended.
 
 ## AI Usage
 
-I used ChatGPT during this assignment to help me understand the requirements, add interactive JavaScript features, review my code, and improve the website's usability.
+I used ChatGPT (OpenAI) during Assignment 3 to assist with understanding requirements, GitHub API integration, JavaScript logic, debugging, contact form validation, UI styling, and documentation.
 
-I reviewed and tested the suggestions and adjusted them to match my existing portfolio. For example, I tested and corrected the live project search so that it filters projects immediately while typing instead of waiting for Enter.
+I reviewed and modified the AI-assisted code to fit my existing portfolio, tested the features in the browser, and verified the website's performance using Lighthouse.
 
-More details about my AI usage are included in `docs/ai-usage-report.md`.
+Detailed AI usage information, including usage logs, benefits, challenges, learning outcomes, and the required declaration, is documented in `docs/ai-usage-report.md`.
 
 ## Author
 
 Nora Alqahtani
+
+SWE 363 — Web Engineering
+
+## Repository
+
+https://github.com/nora-alqahtani/202363230-noraalqahtani-assignment3
