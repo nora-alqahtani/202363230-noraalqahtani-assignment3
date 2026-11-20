@@ -360,3 +360,87 @@ body.dark-mode .github-repo-card a {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Project Filter and Sort Controls */
+.project-controls {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.control-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.control-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  color: #222;
+  font: inherit;
+  cursor: pointer;
+}
+
+.control-group select:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Dark Mode */
+body.dark-mode .control-group label {
+  color: #e5e7eb;
+}
+
+body.dark-mode .control-group select {
+  background-color: #374151;
+  color: white;
+  border-color: #6b7280;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .project-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+
+/* Consistent Button Styling */
+
+/* Contact Form Button */
+#contact-form button {
+  background-color: #2563eb;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+  background-color: #1d4ed8;
+}
+
+/* GitHub Buttons */
+.github-repo-card a,
+body.dark-mode .github-repo-card a {
+  background-color: #2563eb;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.github-repo-card a:hover,
+body.dark-mode .github-repo-card a:hover {
+  background-color: #1d4ed8;
+}
