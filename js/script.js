@@ -1,5 +1,6 @@
 // Contact form validation and feedback
 
+// Advanced Contact Form Validation
 const contactForm = document.getElementById("contact-form");
 const formFeedback = document.getElementById("form-feedback");
 
@@ -7,30 +8,52 @@ contactForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
+  const emailInput = document.getElementById("email");
+  const email = emailInput.value.trim();
   const message = document.getElementById("message").value.trim();
 
   formFeedback.className = "";
 
   if (!name || !email || !message) {
-    formFeedback.textContent = "Please fill in all fields before submitting.";
+    formFeedback.textContent = "Please fill in all fields.";
     formFeedback.className = "feedback-error";
     return;
   }
 
-  if (!document.getElementById("email").validity.valid) {
+  if (name.length < 2) {
+    formFeedback.textContent = "Name must contain at least 2 characters.";
+    formFeedback.className = "feedback-error";
+    return;
+  }
+
+  if (!emailInput.validity.valid) {
     formFeedback.textContent = "Please enter a valid email address.";
     formFeedback.className = "feedback-error";
     return;
   }
 
-  formFeedback.textContent = `Thank you, ${name}! Your form was submitted successfully.`;
+  if (message.length < 10) {
+    formFeedback.textContent = "Message must contain at least 10 characters.";
+    formFeedback.className = "feedback-error";
+    return;
+  }
+
+  const confirmed = window.confirm(
+    `Confirm sending your message, ${name}?`
+  );
+
+  if (!confirmed) {
+    formFeedback.textContent = "Message submission cancelled.";
+    formFeedback.className = "feedback-error";
+    return;
+  }
+
+  formFeedback.textContent =
+    `Thank you, ${name}! Your message was validated successfully.`;
   formFeedback.className = "feedback-success";
 
   contactForm.reset();
 });
-
-
 
 // Project Search, Filter, and Sort
 const projectSearch = document.getElementById("project-search");
