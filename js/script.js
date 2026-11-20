@@ -75,3 +75,93 @@ themeToggle.addEventListener("click", function () {
   applyTheme(newTheme);
   localStorage.setItem("portfolio-theme", newTheme);
 });
+
+
+// GitHub API Integration
+const githubRepos = document.getElementById("github-repos");
+
+async function fetchGitHubRepos() {
+  try {
+    const response = await fetch(
+      "https://api.github.com/users/nora-alqahtani/repos?sort=updated&per_page=6"
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch repositories");
+    }
+
+    const repos = await response.json();
+
+    // Hide the old Fayidh repository
+    const filteredRepos = repos.filter(
+      (repo) => repo.name.toLowerCase() !== "fayidh"
+    );
+
+    // Fetch the final Fayidh team repository
+    const teamResponse = await fetch(
+      "https://api.github.com/repos/lluja1n/Phase4-Fayidh"
+    );
+
+    if (!teamResponse.ok) {
+      throw new Error("Failed to fetch Fayidh team repository");
+    }
+
+    const fayidhRepo = await teamResponse.json();
+
+    // Include the final Fayidh project
+    const displayRepos = [fayidhRepo, ...filteredRepos];
+
+    githubRepos.innerHTML = "";
+
+    if (displayRepos.length === 0) {
+      githubRepos.textContent = "No public repositories found.";
+      return;
+    }
+
+    displayRepos.forEach(function (repo) {
+      const card = document.createElement("div");
+      card.className = "github-repo-card";
+
+      const title = document.createElement("h3");
+      title.textContent = repo.name;
+
+      const description = document.createElement("p");
+
+      const customDescriptions = {
+        "Phase4-Fayidh":
+          "A web-based marketplace for selling and donating surplus materials and equipment.",
+
+        "202363230-noraalqahtani-assignment3":
+          "A personal portfolio website showcasing my projects, skills, and web development experience.",
+
+        "recipe-book":
+          "A recipe book project for exploring and organizing recipes.",
+
+        "proj":
+          "A web development project created to practice programming and website design."
+      };
+
+      description.textContent =
+        customDescriptions[repo.name] ||
+        repo.description ||
+        "No description available.";
+
+
+      const link = document.createElement("a");
+      link.href = repo.html_url;
+      link.textContent = "View on GitHub";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      card.append(title, description, link);
+      githubRepos.appendChild(card);
+    });
+
+  } catch (error) {
+    githubRepos.textContent =
+      "Unable to load GitHub repositories. Please try again later.";
+    console.error("GitHub API error:", error);
+  }
+}
+
+fetchGitHubRepos();
