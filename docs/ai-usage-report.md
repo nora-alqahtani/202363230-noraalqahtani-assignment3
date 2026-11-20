@@ -1,68 +1,112 @@
-# AI Usage Report — Assignment 2
+# AI Usage Report — Assignment 3
 
 ## 1. AI Tool Used
 
-For this assignment, I used ChatGPT to help me improve my personal portfolio website from Assignment 1. I mainly used it to understand the requirements, add interactive features, review my code, and solve problems during development.
+For Assignment 3, I used ChatGPT (OpenAI, GPT-6) to help me improve my personal portfolio website from Assignment 2. I used it to understand the assignment requirements, implement advanced JavaScript features, integrate an external API, debug problems, improve the website design, and update the documentation.
+
+All AI assistance for this assignment was provided through one ChatGPT conversation.
 
 ## 2. How I Used AI
 
-### Live Project Search
+### GitHub API Integration
 
-I used ChatGPT to help me add a search feature to the Projects section. The feature allows visitors to filter projects by typing keywords.
+I used ChatGPT to help me integrate the GitHub REST API into my portfolio using `fetch()` and `async/await`.
 
-At first, the search only updated after I pressed Enter instead of filtering while typing. I used ChatGPT to review the JavaScript and corrected the event handling so the search updates immediately using the `input` event.
+The feature retrieves my public GitHub repositories and displays their names, descriptions, and links dynamically.
 
-### Dark and Light Mode
+I also modified the code to exclude my older Fayidh repository and display the final team repository instead. I added custom descriptions for selected repositories to make the information clearer.
 
-ChatGPT helped me understand how to implement dark and light mode using JavaScript and CSS. I added a button that switches between themes and used `localStorage` to save the selected theme.
+### Project Search, Filtering, and Sorting
 
-This feature improved the user experience by allowing visitors to choose their preferred appearance.
+ChatGPT helped me extend the existing live project search by adding category filtering and alphabetical sorting.
 
-### Contact Form Improvements
+I combined these features so visitors can search for projects, filter them by category, and sort them by name.
 
-I used ChatGPT to improve the contact form from Assignment 1. Instead of displaying a popup alert, I added a feedback message below the form.
+During testing, I noticed that the alphabetical sorting was affected by the "Project 1" and "Project 2" prefixes. I adjusted the sorting logic to use the actual project names and added a way to restore the original project order.
 
-I also added JavaScript validation to check the Name, Email, and Message fields and used CSS to style the success and error messages.
+### Advanced Contact Form Validation
+
+I used ChatGPT to improve the existing contact form by adding more validation conditions.
+
+The updated form checks that all fields are completed, the name contains at least two characters, the email format is valid, and the message contains at least ten characters.
+
+I also added a confirmation dialog before displaying the success message.
+
+### UI Styling and Responsive Design
+
+ChatGPT helped me style the GitHub repository cards and the filtering and sorting controls.
+
+I adjusted the button colors and hover effects to keep the design consistent with the existing portfolio.
+
+I also checked the appearance in light and dark mode.
+
+### Performance Testing
+
+I used ChatGPT for guidance on testing the website with Google Lighthouse.
+
+I installed Live Server to run the website locally and used Lighthouse to evaluate performance, accessibility, best practices, and SEO.
+
+The results were:
+
+| Category | Score |
+|---|---|
+| Performance | 99/100 |
+| Accessibility | 100/100 |
+| Best Practices | 100/100 |
+| SEO | 91/100 |
 
 ### Code Quality and Documentation
 
-I used ChatGPT to help me improve the code formatting and documentation based on the feedback I received in Assignment 1.
+I used ChatGPT to help organize and review the Assignment 3 implementation and update the project documentation.
 
-I made the indentation more consistent and added a Project Structure section to the README, which was missing in my previous submission.
+This included updating the README, technical documentation, and AI usage report to reflect the new features and testing results.
 
 ## 3. Benefits and Challenges
 
-Using ChatGPT helped me understand how to add new features without rebuilding my website from the beginning. It was useful for explaining JavaScript concepts, organizing the code, and identifying possible problems.
+Using ChatGPT helped me understand advanced JavaScript concepts and implement new features without rebuilding my portfolio from the beginning.
 
-One challenge was making sure the suggested code worked correctly with my existing HTML and CSS. I needed to review the changes and test the features in the browser instead of assuming everything would work immediately.
+It was especially useful for understanding API integration, asynchronous JavaScript, array methods, and combining multiple features.
+
+One challenge was making the filtering and sorting logic work correctly together. Another was keeping the GitHub repository cards and buttons consistent with the existing website design.
+
+I reviewed the suggested code and tested the changes in the browser to identify and correct these issues.
 
 ## 4. What I Learned
 
-Through this assignment, I improved my understanding of JavaScript event handling, DOM manipulation, `localStorage`, form validation, and user feedback.
+Through Assignment 3, I improved my understanding of:
 
-I also learned how to make a website more interactive while keeping the code organized and maintaining a responsive layout.
+- Using `fetch()` and `async/await` to retrieve external API data.
+- Handling API errors with `try/catch`.
+- Using JavaScript array methods such as `filter()`, `sort()`, and `forEach()`.
+- Combining search, filtering, and sorting conditions.
+- Validating form inputs using multiple conditions.
+- Managing user preferences using `localStorage`.
+- Testing website performance using Google Lighthouse.
+- Debugging JavaScript and improving responsive UI styling.
+
+I also learned how to integrate new functionality into an existing project while keeping the code organized.
 
 ## 5. Responsible Use and Modifications
 
-I reviewed the AI suggestions and made changes based on my portfolio's requirements.
+I used ChatGPT as a learning and development tool rather than relying on its suggestions without reviewing them.
 
-One example was fixing the live project search so it responded while typing rather than only after pressing Enter. I also kept my original academic project content and screenshots instead of replacing them with generic examples.
+I reviewed the code, made adjustments based on my portfolio requirements, and tested the functionality in the browser.
 
-I used ChatGPT as a learning and development tool and tested the suggested changes to make sure they worked with my website.
+For example, I corrected the alphabetical sorting to ignore the project number prefixes and added logic to restore the default order.
+
+I also customized the GitHub API integration to display the final Fayidh team repository and added project descriptions.
+
+For the UI, I adjusted the button colors and hover effects to maintain consistency in both light and dark mode.
+
+I kept my original academic projects and website content while adding the new Assignment 3 functionality.
 
 ## 6. AI Usage Log
 
-The following table documents my use of ChatGPT while developing Assignment 2. The IDs refer to AI conversations or generated artifacts included in the evidence ZIP.
+The following table documents my use of ChatGPT during Assignment 3. The conversation ID matches the complete conversation included in the AI Evidence ZIP.
 
 | ID | Tool (model) | Date | Purpose | Files affected | What I changed and how I verified it |
 |---|---|---|---|---|---|
-| C01 | ChatGPT (GPT-6) | October 18, 2026 | Planning Assignment 2 and reusing my previous portfolio | Project folder | Copied Assignment 1 into a separate folder and checked that the original project remained unchanged. |
-| A01 | ChatGPT (GPT-6) | October 18, 2026 | Improving code formatting | `index.html`, `css/styles.css`, `js/script.js` | Applied consistent indentation using VS Code formatting and checked that the website still displayed correctly. |
-| A02 | ChatGPT (GPT-6) | October 18, 2026 | Adding live project search | `index.html`, `css/styles.css`, `js/script.js` | Added the search feature and corrected the event handling so the projects filtered immediately while typing. |
-| A03 | ChatGPT (GPT-6) | October 18, 2026 | Adding dark and light mode | `index.html`, `css/styles.css`, `js/script.js` | Added the theme toggle and `localStorage` to remember the selected theme after refreshing. |
-| A04 | ChatGPT (GPT-6) | October 18–19, 2026 | Improving contact form validation | `index.html`, `css/styles.css`, `js/script.js` | Replaced the popup alert with an inline feedback message and reviewed the form validation. |
-| A05 | ChatGPT (GPT-6) | October 19, 2026 | Updating project documentation | `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md` | Updated the documentation and added the project structure that was missing in Assignment 1. |
-| A06 | ChatGPT (GPT-6) | October 19, 2026 | Reviewing Assignment 2 files | `css/styles.css`, `docs/ai-usage-report.md` | Corrected the AI report filename and added improvements for dark-mode text readability. |
+| C01 | ChatGPT (OpenAI, GPT-6) | November 20, 2026 | Assignment setup, GitHub API integration, project filtering and sorting, advanced contact form validation, UI styling, debugging, performance testing, and documentation. | `index.html`, `css/styles.css`, `js/script.js`, `README.md`, `docs/technical-documentation.md`, `docs/ai-usage-report.md`, `.gitignore` | Reviewed and modified AI-assisted code, customized the GitHub repository display, corrected sorting behavior, improved button styling, tested search, filtering, sorting, form validation, and dark mode, and evaluated performance using Lighthouse. Reviewed documentation for accuracy. |
 
 ## 7. AI Declaration
 
@@ -72,6 +116,6 @@ I declare that this report and the attached evidence document all of my AI use i
 
 **Student ID:** 202363230
 
-**Date:** [October 19, 2026]
+**Date:** November 20, 2026
 
 **Signature:** Nora Alqahtani
