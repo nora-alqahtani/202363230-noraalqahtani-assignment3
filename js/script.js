@@ -31,27 +31,75 @@ contactForm.addEventListener("submit", function (event) {
 });
 
 
-// Live project search
+
+// Project Search, Filter, and Sort
 const projectSearch = document.getElementById("project-search");
-const projectCards = document.querySelectorAll(".project-card");
+const projectFilter = document.getElementById("project-filter");
+const projectSort = document.getElementById("project-sort");
+const projectsContainer = document.querySelector(".projects-container");
+const projectCards = Array.from(document.querySelectorAll(".project-card"));
 const noProjectsMessage = document.getElementById("no-projects-message");
 
-projectSearch.addEventListener("input", function () {
+function getProjectName(card) {
+  return card.querySelector("h3").textContent
+    .replace(/^Project \d+\s*[—–-]\s*/i, "")
+    .trim();
+}
+function updateProjects() {
   const searchText = projectSearch.value.toLowerCase().trim();
-  let visibleProjects = 0;
+  const category = projectFilter.value;
+  const sortBy = projectSort.value;
 
-  projectCards.forEach(function (card) {
-    const projectName = card.querySelector("h3").textContent.toLowerCase();
+  // Filter projects by search text and category
+  const visibleProjects = projectCards.filter(function (card) {
+    const name = card.querySelector("h3").textContent.toLowerCase();
 
-    if (projectName.includes(searchText)) {
-      card.style.display = "";
-      visibleProjects++;
-    } else {
-      card.style.display = "none";
-    }
+    const matchesSearch = name.includes(searchText);
+    const matchesCategory =
+      category === "all" || card.dataset.category === category;
+
+    return matchesSearch && matchesCategory;
   });
-  noProjectsMessage.hidden = visibleProjects > 0;
-});
+
+  // Sort the matching projects
+
+  if (sortBy === "az") {
+    visibleProjects.sort((a, b) =>
+      getProjectName(a).localeCompare(getProjectName(b))
+    );
+  } else if (sortBy === "za") {
+    visibleProjects.sort((a, b) =>
+      getProjectName(b).localeCompare(getProjectName(a))
+    );
+  } else {
+    // Restore the original project order
+    visibleProjects.sort(
+      (a, b) => projectCards.indexOf(a) - projectCards.indexOf(b)
+    );
+  }
+
+
+  // Hide unmatched projects
+  projectCards.forEach(function (card) {
+    card.hidden = !visibleProjects.includes(card);
+    card.style.display = card.hidden ? "none" : "";
+  });
+
+  // Display matching projects in sorted order
+  visibleProjects.forEach(function (card) {
+    projectsContainer.appendChild(card);
+  });
+
+  // Show a message when no projects match
+  noProjectsMessage.hidden = visibleProjects.length > 0;
+}
+
+projectSearch.addEventListener("input", updateProjects);
+projectFilter.addEventListener("change", updateProjects);
+projectSort.addEventListener("change", updateProjects);
+
+updateProjects();
+
 
 // Dark and light mode
 const themeToggle = document.getElementById("theme-toggle");
