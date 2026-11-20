@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Build files
+dist/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# AI evidence (Blackboard only)
+conversations/
+artifacts/
+*-ai-evidence.zip
