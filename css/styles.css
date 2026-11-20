@@ -283,3 +283,80 @@ body.dark-mode #no-projects-message {
     padding: 1.5rem;
   }
 }
+
+
+/* GitHub Repositories */
+#github-repos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.github-repo-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.github-repo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.github-repo-card h3 {
+  color: #1e3a5f;
+  margin-bottom: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.github-repo-card p {
+  color: #555;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.github-repo-card a {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.6rem 1rem;
+  background-color: #1e3a5f;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.github-repo-card a:hover {
+  background-color: #2563eb;
+}
+
+/* GitHub Cards — Dark Mode */
+body.dark-mode .github-repo-card {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+body.dark-mode .github-repo-card h3 {
+  color: #93c5fd;
+}
+
+body.dark-mode .github-repo-card p {
+  color: #e5e7eb;
+}
+
+body.dark-mode .github-repo-card a {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Responsive GitHub Cards */
+@media (max-width: 768px) {
+  #github-repos {
+    grid-template-columns: 1fr;
+  }
+}
